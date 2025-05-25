@@ -1,2 +1,2 @@
 #!/bin/bash
-./change_owner_if_guillaume.sh
+chown --from=guillaume vincent hello
