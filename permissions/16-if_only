@@ -1,2 +1,3 @@
 #!/bin/bash
-./change_if_the_owner
+[ "$(stat -c %U hello)" = "guillaume" ] && chown vincent hello
+
