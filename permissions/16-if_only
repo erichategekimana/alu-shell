@@ -1,2 +1,2 @@
 #!/bin/bash
-if [ "$(stat -c %U hello)" = guillaume ] then sudo chown vincent hello fi
+./change_owner_if_guillaume.sh
