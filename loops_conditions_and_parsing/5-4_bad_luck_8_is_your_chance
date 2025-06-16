@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# scripts htat displays different message to the user. "bad luck" for 4th loop, "good luck" for 8th loop, ""Best school" for other loops
+counter=0   
+while [ $counter -lt 10 ]; do #while counter is lower than 10, do ...
+    if [ $counter -eq 3 ] # if counter is equal to 3, then ...
+    then
+        echo "bad luck"
+    elif [ $counter -eq 7 ] # if counter is equal to 7, then ...
+    then
+        echo "good luck"
+    else                    # if counter is not equal to 3 or 7, then ...
+        echo "Best School"
+    fi
+    (( counter=counter+1 )) # counter updater
+done
