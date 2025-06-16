@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# scripts that summarizes HTTP status code occurrences pf each IP from a log file using awk.
+
+# if there's no $1 then ...
+if [[ ! -s "$1" ]]; then
+    exit 0
+fi
+
+awk '
+    NF == 3 && $3 ~ /^[0-9]{3}$/ && $2 ~ /^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$/ {
+        key = $2 " " $3
+        count[key] += 1
+    }
+    END {
+        for (k in count) {
+            print count[k], k
+        }
+    }
+' "$1" | sort -nr
