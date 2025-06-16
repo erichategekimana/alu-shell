@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
-
-
 # This script manages the 'manage_my_process' daemon process (PID)
+
+
+
 if [ "$1" == "start" ]; then
     ./manage_my_process &
     echo $! > /var/run/my_process.pid
