@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Dummy long-running service
+while true; do
+    sleep 10
+done
