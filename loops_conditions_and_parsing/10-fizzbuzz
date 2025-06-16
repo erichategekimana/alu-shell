@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# scripts that displays numbers from 1 to 100 and add some comments
+number=1
+
+while [ $number -lt 101 ]; do
+
+	# method we used here says "if you take $number, and devide it by 5 or 3, and reminder is 0, then ..."
+    	if [ $((number % 5)) == 0 ] && [ $((number % 3)) == 0 ]; then
+        	echo "FizzBuzz"
+    	elif [ $((number % 5)) == 0 ]; then
+        	echo "Buzz"
+    	elif [ $((number % 3)) == 0 ]; then
+        	echo "Fizz"
+
+
+	# if reminder is not 0, then echo "$number"
+    	else
+        	echo $number
+    	fi
+    	(( number+=1 )) # number updater
+done
