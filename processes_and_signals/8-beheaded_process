@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# script that kills the process 7-highlander
+
+# pkill, means process kill. it send signal like SIGKILL or SIGTERM
+pkill -f 7-highlander -SIGKILL
