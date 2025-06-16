@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+#bash script that gives information about "school" file
+found=0 #this is like counter that will be used to detect if file exist or not
+for file in *; do  # a for loop which will cross to all files and store their names in varialbe named "file"
+    if [ "$file" == "school" ] # if for loop find file name "school", excute this body
+        then
+                (( found=1 )) #counter updater
+        echo "school file exists"
+
+	# after finding the file, check if it is empty or not, then echo message
+	if [ -s "$file" ] # file test operation ( by using -s)
+            then
+            echo "school file is not empty"
+        else
+            echo "school file is empty"
+        fi
+
+	# this will check if $file is regular file ( by using -f)
+        if [ -f "$file" ]
+            then
+            echo "school is a regular file"
+        fi
+    fi
+done
+
+
+# if file does not found (we checked this by $found variable) echo some error message
+if [ $found -eq 0 ]
+    then
+    echo "school file does not exist"
+fi
