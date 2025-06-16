@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# this shell scritp, will display "Best school" 10 times, but at eight time, it will add new line with text "Hi"
+counter=0
+while [ $counter -lt 10 ]; do # while counter is still lower than 10, excute these commands
+    if [ $counter -eq 8 ] # this will matter if counter is equal to 8. if Cond become true, then it will add a new line with text "Hi"
+    then
+        echo -e "Best School\nHi"
+    else
+        echo "Best School"
+    fi
+    (( counter=counter+1 )) #counter updater(per each loop)
+done
