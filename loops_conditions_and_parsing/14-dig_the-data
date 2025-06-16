@@ -12,7 +12,7 @@ awk '
         count[key] += 1
     }
     END {
-        for (k in count) {
+        (k in count) {
             print count[k], k
         }
     }
