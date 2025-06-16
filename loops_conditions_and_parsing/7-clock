@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# scripts that displays time for 12 hours and 59 minutes. "H" stands for hour, "M" stands for minute
+M=1
+H=0
+while [ $H -lt 13 ]; do
+    echo Hour: $H
+    while [ $M -lt 60 ]; do
+        echo $M
+        (( M+=1 ))
+    done
+    (( M=1 ))
+    (( H+=1 ))
+done
