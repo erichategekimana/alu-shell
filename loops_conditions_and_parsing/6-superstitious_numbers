@@ -7,7 +7,7 @@ while [ $counter -lt 21 ]; do # while counter is less than 20, do ...
         "4")
             echo "bad luck from China"
             ;;
-        "7")
+        "9")
             echo "bad luck from Japan"
             ;;
         "17")
