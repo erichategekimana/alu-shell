@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# htis script will display contents of current directory
+for line in *; do # this will go through each file in the directory
+    echo "$line" | cut -d '-' -f2  # this will echo $line, and pass that to "cut -d '-' -f2" which will remove dash part
+done
