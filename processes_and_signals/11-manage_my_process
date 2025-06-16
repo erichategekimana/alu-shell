@@ -1,21 +1,39 @@
 #!/usr/bin/env bash
-# script to manage 'manage_my_process'
+# this  script manage 'manage_my_process'
 
-# we will be using if statment
-if [ "$1" == "start" ]; then
-    ./manage_my_process &
-    echo $$ > /var/run/my_process.pid
+
+PID_FILE="/var/run/my_process.pid"
+
+
+start_process() {
+    ./manage_my_process &           # start the process in background
+    echo $! > "$PID_FILE"           # write the actual PID of the process, not the script
     echo "manage_my_process started"
-elif [ "$1" == "stop" ]; then
-    pkill -f ./manage_my_process
-    sudo rm /var/run/my_process.pid
-    echo "manage_my_process stopped"
-elif [ "$1" == "restart" ]; then
-    pkill -f ./manage_my_process
-    sudo rm /var/run/my_process.pid
-    ./manage_my_process &
-    echo $$ > /var/run/my_process.pid
-    echo "manage_my_process restarted"
-else
-    echo "Usage: manage_my_process {start|stop|restart}"
-fi
+}
+
+stop_process() {
+    if [ -f "$PID_FILE" ]; then
+        kill "$(cat "$PID_FILE")" 2>/dev/null
+        rm -f "$PID_FILE"
+        echo "manage_my_process stopped"
+    fi
+}
+
+
+case "$1" in
+    start)
+        start_process
+        ;;
+    stop)
+        stop_process
+        ;;
+    restart)
+        stop_process
+        start_process
+        echo "manage_my_process restarted"
+        ;;
+    *)
+        echo "Usage: manage_my_process {start|stop|restart}"
+        ;;
+esac
+
